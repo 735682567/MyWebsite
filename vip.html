@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIP المهام</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script>
+    </script>
+
+    <header>
+        <img src="images/logo.png" class="logo">
+        <h1>مهام VIP</h1>
+    </header>
+
+    <main>
+        <div class="vipTask">
+            <img src="images/vip-img.png" alt="VIP" class="vipImg">
+            <h2>VIP1</h2>
+            <p>الربح اليومي: <strong>3.00 USDT</strong></p>
+            <p>دورة الاستثمار: <strong>45 يوم</strong></p>
+            <p>عدد الاستثمارات المتاحة يوميًا: <strong>1</strong></p>
+            <p>إجمالي عدد الاستثمارات المتاحة: <strong>1</strong></p>
+            <p>السعر: <strong>12.00 USDT</strong></p>
+            <button id="buyVIPBtn">اشتري VIP</button>
+        </div>
+
+        <div class="navigationButtons">
+            <button onclick="window.location.href='home.html'">البيت</button>
+            <button onclick="window.location.href='tasks.html'">المهام</button>
+            <button onclick="window.location.href='dashboard.html'">لوحة التحكم</button>
+        </div>
+    </main>
+
+    <button onclick="logout()" class="logoutBtn">تسجيل خروج</button>
+
+    <script>
+        // تحقق حالة VIP
+        let isVIP = localStorage.getItem("VIP1") === "true";
+        const buyBtn = document.getElementById("buyVIPBtn");
+
+        if(isVIP){
+            buyBtn.textContent = "تم شراء VIP";
+            buyBtn.disabled = true;
+        }
+
+        buyBtn.addEventListener("click", function(){
+            // محاكاة شراء VIP
+            if(!isVIP){
+                localStorage.setItem("VIP1", "true");
+                alert("تم شراء VIP بنجاح! الآن يمكنك الوصول لمهام VIP.");
+                buyBtn.textContent = "تم شراء VIP";
+                buyBtn.disabled = true;
+
+                // إضافة ربح يومي إلى حساب المستخدم
+                localStorage.setItem("dailyProfitVIP", "3.00 USDT");
+                <button id="claimBtn">استلام الربح اليومي</button>

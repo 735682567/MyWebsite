@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الملف الشخصي</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script>
+
+    </script>
+
+    <header>
+        <img src="images/logo.png" class="logo">
+        <h1>الملف الشخصي</h1>
+    </header>
+
+    <main>
+        <div class="profileContainer">
+            <h2>بيانات المستخدم</h2>
+            <p>الاسم: <span id="userNameDisplay"></span></p>
+            <p>البريد الإلكتروني: <span id="userEmailDisplay"></span></p>
+
+            <h2>تغيير كلمة المرور</h2>
+            <input type="password" id="oldPassword" placeholder="كلمة المرور الحالية">
+            <input type="password" id="newPassword" placeholder="كلمة المرور الجديدة">
+            <input type="password" id="confirmNewPassword" placeholder="تأكيد كلمة المرور الجديدة">
+            <button onclick="changePassword()">تغيير كلمة المرور</button>
+            <p id="passwordMessage" style="margin-top:10px;"></p>
+
+            <h2>خدمة العملاء</h2>
+            <button onclick="contactSupport()">التواصل عبر واتساب</button>
+        </div>
+
+        <div class="navigationButtons">
+            <button onclick="window.location.href='home.html'">البيت</button>
+            <button onclick="window.location.href='dashboard.html'">لوحة التحكم</button>
+            <button onclick="window.location.href='tasks.html'">المهام</button>
+            <button onclick="window.location.href='vip.html'">مهام VIP</button>
+        </div>
+    </main>
+
+    <button onclick="logout()" class="logoutBtn">تسجيل خروج</button>
+
+    <script>
+        // عرض بيانات المستخدم
+        document.getElementById("userNameDisplay").textContent = localStorage.getItem("userName");
+        document.getElementById("userEmailDisplay").textContent = localStorage.getItem("userEmail");
+
+        // تغيير كلمة المرور
+        function changePassword() {
+            const oldPass = document.getElementById("oldPassword").value;
+            const newPass = document.getElementById("newPassword").value;
+            const confirmPass = document.getElementById("confirmNewPassword").value;
+            const message = document.getElementById("passwordMessage");
+
+            let savedPassword = localStorage.getItem("userPassword");
+
+            if(oldPass !== savedPassword) {
+                message.style.color = "red";
+                message.textContent = "كلمة المرور الحالية غير صحيحة!";
+                return;
+            }
+
+            if(newPass.length < 6) {
+                message.style.color = "red";
+                message.textContent = "يجب أن تكون كلمة المرور الجديدة 6 أحرف على الأقل!";
+                return;
+            }
+
+            if(newPass !== confirmPass) {
+                message.style.color = "red";
+                message.textContent = "كلمتا المرور الجديدتين غير متطابقتين!";
+                return;
+            }
+
+            localStorage.setItem("userPassword", newPass);
+            message.style.color = "green";
+            message.textContent = "تم تغيير كلمة المرور بنجاح!";
+            document.getElementById("oldPassword").value = "";
+            document.getElementById("newPassword").value = "";
+            document.getElementById("confirmNewPassword").value = "";
+        }
+
+        // التواصل عبر واتساب
+        function contactSupport() {
+            let phone = "735682567";
+            let url = `https://wa.me/${phone}`;
+            window.open(url, "_blank");
+        }
+
+        function logout() {
+            localStorage.clear();
+            alert("تم تسجيل الخروج!");
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+</html>

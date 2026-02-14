@@ -1,0 +1,34 @@
+if(localStorage.getItem("isLoggedIn") !== "true") {
+    alert("يجب تسجيل الدخول أولاً!");
+    window.location.href = "login.html";
+}
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقعي الشخصي</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="images/logo.png" alt="Logo" class="logo">
+        <nav>
+            <a href="index.html">الرئيسية</a>
+            <a href="about.html">عن الموقع</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>مرحبًا بك في موقعي!</h1>
+        <p>هذا موقع تجريبي يعمل مباشرة على هاتفك باستخدام Acode.</p>
+        <button onclick="showMessage()">اضغط هنا</button>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 موقعي الشخصي. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html><button onclick="logout()" style="position:fixed; top:10px; right:10px;">تسجيل خروج</button>

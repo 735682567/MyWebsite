@@ -1,0 +1,33 @@
+// حماية الصفحة
+if(localStorage.getItem("isLoggedIn") !== "true") {
+    alert("يجب تسجيل الدخول أولاً!");
+    window.location.href = "login.html";
+}
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عن الموقع</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="images/logo.png" alt="Logo" class="logo">
+        <nav>
+            <a href="index.html">الرئيسية</a>
+            <a href="about.html">عن الموقع</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>عن الموقع</h1>
+        <p>هذا الموقع تم إنشاؤه باستخدام تطبيق <strong>Acode</strong> على الهاتف فقط، بدون كمبيوتر.</p>
+        <p>يمكنك تعديل النصوص والألوان كما تريد!</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 موقعي الشخصي. جميع الحقوق محفوظة.</p>
+    </footer>
+</body>
+</html>

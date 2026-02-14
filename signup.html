@@ -1,0 +1,40 @@
+if(localStorage.getItem("isLoggedIn") !== "true") {
+    alert("يجب تسجيل الدخول أولاً!");
+    window.location.href = "login.html";
+}
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنشاء حساب</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="images/logo.png" alt="Logo" class="logo">
+        <nav>
+            <a href="index.html">الرئيسية</a>
+            <a href="signup.html">إنشاء حساب</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>إنشاء حساب جديد</h1>
+        <form id="signupForm">
+            <input type="text" id="name" placeholder="الاسم الكامل" required>
+            <input type="email" id="email" placeholder="البريد الإلكتروني" required>
+            <input type="password" id="password" placeholder="كلمة المرور" required>
+            <input type="password" id="confirmPassword" placeholder="تأكيد كلمة المرور" required>
+            <button type="submit">إنشاء الحساب</button>
+        </form>
+        <p id="message" style="color:red; margin-top:10px;"></p>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 موقعي الشخصي. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script src="signup.js"></script>
+</body>
+</html>

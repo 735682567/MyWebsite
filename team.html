@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الفريق والإحالات</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script>
+  
+    </script>
+
+    <header>
+        <img src="images/logo.png" class="logo">
+        <h1>الفريق والإحالات</h1>
+    </header>
+
+    <main>
+        <div class="referralContainer">
+            <h2>رابط الإحالة الخاص بك</h2>
+            <input type="text" id="referralLink" readonly>
+            <button onclick="copyReferral()">نسخ الرابط</button>
+
+            <h2>عدد الأعضاء المحالين</h2>
+            <p id="referralsCount">0</p>
+
+            <h2>العمولة المكتسبة</h2>
+            <p id="referralEarnings">0.00 USDT</p>
+
+            <h2>محاكاة إضافة عضو جديد</h2>
+            <button onclick="simulateReferral()">محاكاة تسجيل عضو جديد</button>
+        </div>
+
+        <div class="navigationButtons">
+            <button onclick="window.location.href='home.html'">البيت</button>
+            <button onclick="window.location.href='dashboard.html'">لوحة التحكم</button>
+            <button onclick="window.location.href='tasks.html'">المهام</button>
+        </div>
+    </main>
+
+    <button onclick="logout()" class="logoutBtn">تسجيل خروج</button>
+
+    <script>
+        // جلب اسم المستخدم لتوليد رابط الإحالة
+        let userName = localStorage.getItem("userName") || "user";
+        const referralLinkInput = document.getElementById("referralLink");
+        referralLinkInput.value = `https://mysite.com/signup?ref=${userName}`;
+
+        // جلب بيانات الإحالات
+        let referralsCount = parseInt(localStorage.getItem("referralsCount") || "0");
+        let referralEarnings = parseFloat(localStorage.getItem("referralEarnings") || "0");
+        const referralsCountP = document.getElementById("referralsCount");
+        const referralEarningsP = document.getElementById("referralEarnings");
+
+        referralsCountP.textContent = referralsCount;
+        referralEarningsP.textContent = referralEarnings.toFixed(2);
+
+        function copyReferral() {
+            referralLinkInput.select();
+            referralLinkInput.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+            alert("تم نسخ رابط الإحالة!");
+        }
+
+        function simulateReferral() {
+            // إضافة عضو جديد
+            referralsCount += 1;
+            referralEarnings += 1.00; // فرضية: 1 USDT لكل إحالة
+            localStorage.setItem("referralsCount", referralsCount);
+            localStorage.setItem("referralEarnings", referralEarnings.toFixed(2
